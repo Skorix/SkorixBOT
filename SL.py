@@ -22,6 +22,7 @@ def start(message):
         keyboard.row('Назад')
         bot.send_message(message.from_user.id,'На какой день недели?',reply_markup=keyboard)
 
+
     if message.text=='Назад':
         bot.send_message(message.from_user.id,'Привет, что тебе нужно?',reply_markup=menu)
 
@@ -32,29 +33,11 @@ def start(message):
     if message.text=='Понедельник' and database.chet == 'Нечет':
         bot.send_message(message.chat.id,database.mon1)
 
-    if message.text=='mon1change':
-        sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,mon1)
-
-    if message.text=='mon2change':
-        sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,mon2)
-
-
     if message.text=='Вторник' and database.chet == 'Чет':
         bot.send_message(message.chat.id,database.tues2)
 
     if message.text=='Вторник' and database.chet == 'Нечет':
         bot.send_message(message.chat.id,database.tues1)
-
-    if message.text=='tues1change':
-        sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,tues1)
-
-    if message.text=='tues2change':
-        sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,tues2)
-
 
     if message.text=='Среда' and database.chet == 'Чет':
         bot.send_message(message.chat.id,database.wed2)
@@ -62,29 +45,11 @@ def start(message):
     if message.text=='Среда' and database.chet == 'Нечет':
         bot.send_message(message.chat.id,database.wed1)
 
-    if message.text=='wed1change':
-        sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,wed1)
-
-    if message.text=='wed2change':
-        sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,wed2)
-
-
     if message.text=='Четверг' and database.chet == 'Чет':
         bot.send_message(message.chat.id,database.thurs2)
 
     if message.text=='Четверг' and database.chet == 'Нечет':
         bot.send_message(message.chat.id,database.thurs1)
-
-    if message.text=='tues1change':
-        sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,thurs1)
-
-    if message.text=='tues2change':
-        sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,thurs2)
-
 
     if message.text=='Пятница' and database.chet == 'Чет':
         bot.send_message(message.chat.id,database.fri2)
@@ -92,32 +57,15 @@ def start(message):
     if message.text=='Пятница' and database.chet == 'Нечет':
         bot.send_message(message.chat.id,database.fri1)
 
-    if message.text=='fri1change':
-        sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,fri1)
-
-    if message.text=='fri2change':
-        sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,fri2)
-
-
     if message.text== 'Субота' and database.chet == 'Чет':
         bot.send_message(message.chat.id,database.sat2)
 
     if message.text== 'Субота' and database.chet == 'Нечет':
         bot.send_message(message.chat.id,database.sat1)
 
-    if message.text=='sat1change':
-        sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,sat1)
-
-    if message.text=='sat2change':
-        sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,sat2)
-
 
     if message.text=='Четн':
-        sent_1 = bot.send_message(message.chat.id,'Введи Чётность')
+        sent_1 = bot.send_message(message.chat.id,'Введи чётность')
         bot.register_next_step_handler(sent_1, chet1)
 
 
