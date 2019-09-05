@@ -22,6 +22,9 @@ def start(message):
         keyboard.row('Назад')
         bot.send_message(message.from_user.id,'На какой день недели?',reply_markup=keyboard)
 
+    if message.text=='Назад':
+        bot.send_message(message.from_user.id,'Привет, что тебе нужно?',reply_markup=menu)
+
 
     if message.text=='Понедельник' and database.chet == 'Чет':
         bot.send_message(message.chat.id,database.mon2)
@@ -31,11 +34,11 @@ def start(message):
 
     if message.text=='mon1change':
         sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,mon11)
+        bot.register_next_step_handler(sent_1,mon1)
 
     if message.text=='mon2change':
         sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,mon12)
+        bot.register_next_step_handler(sent_1,mon2)
 
 
     if message.text=='Вторник' and database.chet == 'Чет':
@@ -46,11 +49,11 @@ def start(message):
 
     if message.text=='tues1change':
         sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,tues11)
+        bot.register_next_step_handler(sent_1,tues1)
 
     if message.text=='tues2change':
         sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,tues12)
+        bot.register_next_step_handler(sent_1,tues2)
 
 
     if message.text=='Среда' and database.chet == 'Чет':
@@ -61,11 +64,11 @@ def start(message):
 
     if message.text=='wed1change':
         sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,wed11)
+        bot.register_next_step_handler(sent_1,wed1)
 
     if message.text=='wed2change':
         sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,wed12)
+        bot.register_next_step_handler(sent_1,wed2)
 
 
     if message.text=='Четверг' and database.chet == 'Чет':
@@ -76,11 +79,11 @@ def start(message):
 
     if message.text=='tues1change':
         sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,thurs11)
+        bot.register_next_step_handler(sent_1,thurs1)
 
     if message.text=='tues2change':
         sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,thurs12)
+        bot.register_next_step_handler(sent_1,thurs2)
 
 
     if message.text=='Пятница' and database.chet == 'Чет':
@@ -91,11 +94,11 @@ def start(message):
 
     if message.text=='fri1change':
         sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,fri11)
+        bot.register_next_step_handler(sent_1,fri1)
 
     if message.text=='fri2change':
         sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,fri12)
+        bot.register_next_step_handler(sent_1,fri2)
 
 
     if message.text== 'Субота' and database.chet == 'Чет':
@@ -106,20 +109,16 @@ def start(message):
 
     if message.text=='sat1change':
         sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,sat11)
+        bot.register_next_step_handler(sent_1,sat1)
 
     if message.text=='sat2change':
         sent_1 = bot.send_message(message.chat.id,'Введи Расписание')
-        bot.register_next_step_handler(sent_1,sat12)
+        bot.register_next_step_handler(sent_1,sat2)
 
 
     if message.text=='Четн':
         sent_1 = bot.send_message(message.chat.id,'Введи Чётность')
         bot.register_next_step_handler(sent_1, chet1)
-
-
-    if message.text=='Назад':
-        bot.send_message(message.from_user.id,'Привет, что тебе нужно?',reply_markup=menu)
 
 
     if message.text=='Домашка':
@@ -158,6 +157,7 @@ def start(message):
 
     if message.text=='БЖ':
         bot.send_message(message.chat.id,database.les8)                
+
 
     if message.text=='Админ на месте':
         keyboard=telebot.types.ReplyKeyboardMarkup(True, False)
