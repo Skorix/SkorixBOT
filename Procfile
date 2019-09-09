@@ -1,1 +1,1 @@
-web: python SL.py
+worker: python SL.py
