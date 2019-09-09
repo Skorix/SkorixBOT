@@ -132,15 +132,15 @@ def main(message):
 		global DZ_NUM
 		DZ_NUM = 0
 
-	if message.text == '113 - Основы алгоритмизации и программирования' and '301/3 - Основы алгоритмизации и программирования':
+	if message.text == '113 - Основы алгоритмизации и программирования' or '301/3 - Основы алгоритмизации и программирования':
 		DZ_NUM = 0
 		bot.send_message(message.chat.id,database.lesson[DZ_NUM])
 
-	if message.text == '310/3 - Устройство и функционирование ИС' and '301/2 - Устройство и функционирование ИС' and '412 - Устройство и функционирование ИС':
+	if message.text == '310/3 - Устройство и функционирование ИС' or '301/2 - Устройство и функционирование ИС' or '412 - Устройство и функционирование ИС':
 		DZ_NUM = 1
 		bot.send_message(message.chat.id,database.lesson[DZ_NUM]) 
 
-	if message.text == '23 - Элементы высшей математики' and '22 - Элементы высшей математики' and 'Нет - Элементы высшей математики' and '317 - Элементы высшей математики' and '316 - Элементы высшей математики' and '310 - Элементы высшей математики':
+	if message.text == '23 - Элементы высшей математики' or '22 - Элементы высшей математики' or 'Нет - Элементы высшей математики' or '317 - Элементы высшей математики' or '316 - Элементы высшей математики' or '310 - Элементы высшей математики':
 		DZ_NUM = 2
 		bot.send_message(message.chat.id,database.lesson[DZ_NUM])
 
@@ -148,11 +148,11 @@ def main(message):
 		DZ_NUM = 3
 		bot.send_message(message.chat.id,database.lesson[DZ_NUM])
 
-	if message.text == '301/2 - МДК' and 'Нет-МДК' and '316 - МДК' and '113-МДК':
+	if message.text == '301/2 - МДК' or 'Нет-МДК' or '316 - МДК' or '113-МДК':
 		DZ_NUM = 4
 		bot.send_message(message.chat.id,database.lesson[DZ_NUM])
 
-	if message.text == 'Нет - БЖ' and '407 - БЖ':
+	if message.text == 'Нет - БЖ' or '407 - БЖ':
 		DZ_NUM = 5
 		bot.send_message(message.chat.id,database.lesson[DZ_NUM])
 
