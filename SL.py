@@ -23,7 +23,7 @@ def main(message):
 		sent = bot.send_message(message.chat.id,'Введи чётность')
 		bot.register_next_step_handler(sent, chet)
 
-	if database.chet == 'Чет': week = 1
+	if database.chet == 'Нечет': week = 1
 	else: week = 0
 
 
