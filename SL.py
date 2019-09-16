@@ -51,18 +51,14 @@ def main(message):
 		bot.register_next_step_handler(sent,change1)
 
 	if database.change != 'Нет':
-		bot.send_message(message.chat.id, 'Изменения:\n' + database.change)
+		bot.send_message(message.chat.id, 'Изменения:\n' + database.chang
 
-
-def lesson(message):
-	database.lesson[DZ_NUM] = message.text
-	return database.lesson[DZ_NUM]
 
 def chet(message):
 	database.chet = message.text
 	return database.chet
 
-def change1(message):
+def change(message):
 	database.change = message.text
 	return database.change
 
