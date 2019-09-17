@@ -58,7 +58,7 @@ def chet(message):
 	database.chet = message.text
 	return database.chet
 
-def change(message):
+def change1(message):
 	database.change = message.text
 	return database.change
 
