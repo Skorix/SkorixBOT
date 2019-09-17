@@ -51,7 +51,7 @@ def main(message):
 		bot.register_next_step_handler(sent,change1)
 
 	if database.change != 'Нет':
-		bot.send_message(message.chat.id, 'Изменения:\n' + database.change
+		bot.send_message(message.chat.id, 'Изменения:\n' + database.change)
 
 
 def chet(message):
