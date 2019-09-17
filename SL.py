@@ -48,7 +48,7 @@ def main(message):
 
 	if message.text == 'Чнг':
 		sent = bot.send_message(message.chat.id,'Введи изменения')
-		bot.register_next_step_handler(sent,change1)
+		bot.register_next_step_handler(sent,change)
 
 	if database.change != 'Нет':
 		bot.send_message(message.chat.id, 'Изменения:\n' + database.change)
@@ -58,7 +58,7 @@ def chet(message):
 	database.chet = message.text
 	return database.chet
 
-def change1(message):
+def change(message):
 	database.change = message.text
 	return database.change
 
