@@ -50,7 +50,7 @@ def main(message):
 		sent = bot.send_message(message.chat.id,'Введи изменения')
 		bot.register_next_step_handler(sent,change)
 
-	if database.change != 'Нет':
+	if message.text != '/start' and database.change != 'Нет':
 		bot.send_message(message.chat.id, 'Изменения:\n' + database.change)
 
 
