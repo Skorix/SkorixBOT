@@ -16,7 +16,7 @@ def main(message):
 	
 	
 	if message.text == '/start':
-		bot.send_message(message.from_user.id,'На какой день недели рассписание тебе нужно?', reply_markup = Keyboard)
+		bot.send_message(message.from_user.id,'На какой день недели рассписание тебе нужно?\nИ не забывай что Илья яойщик!', reply_markup = Keyboard)
 
 
 	if message.text == 'Четн':
