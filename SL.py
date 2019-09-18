@@ -52,6 +52,13 @@ def main(message):
 
 	if message.text != '/start' and database.change != 'Нет':
 		bot.send_message(message.chat.id, 'Изменения:\n' + database.change)
+	
+	i=0
+	if message.text == 'Илья':
+		while i < 16:
+			bot.send_message(message.chat.id, 'Яойщик')
+			i+=1
+
 
 
 def chet(message):
