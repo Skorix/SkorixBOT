@@ -60,7 +60,6 @@ def main(message):
 			bot.send_message(message.chat.id,'Яойщик')
 		
 
-
 def lesson(message):
 	database.lesson[DZ_NUM] = message.text
 	return database.lesson[DZ_NUM]
