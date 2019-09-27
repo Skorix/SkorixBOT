@@ -52,6 +52,13 @@ def main(message):
 
 	if database.change != 'Нет':
 		bot.send_message(message.chat.id, 'Изменения:\n' + database.change)
+		
+		
+	if message.text = 'Илья':	
+		i = 1
+		while i<21:
+			bot.send_message(message.chat.id,'Яойщик')
+		
 
 
 def lesson(message):
