@@ -2,15 +2,16 @@
 import telebot
 import shelve
 global menu
+menu = telebot.types.ReplyKeyboardMarkup(True, False)
+menu.row('Понедельник','Вторник')
+menu.row('Среда','Четверг')
+menu.row('Пятница','Субота')
 bot = telebot.TeleBot('857593648:AAFR6ED50U5I5id5d4KWlLMhVTxHE1uKVPU')
 @bot.message_handler(content_types=['text'])
 def main(message):
 #start
-	menu = telebot.types.ReplyKeyboardMarkup(True, False)
-	menu.row('Понедельник','Вторник')
-	menu.row('Среда','Четверг')
-	menu.row('Пятница','Субота')
-	bot.send_message(message.from_user.id, 'На какой день недели тебе нужно рассписание?', reply_markup = menu)
+	if message.text == '/start':
+		bot.send_message(message.from_user.id, 'На какой день недели тебе нужно рассписание?', reply_markup = menu)
 #Чётность
 	if message.text=='Четн':
 		db = shelve.open('db')
@@ -326,14 +327,15 @@ def chetn(message):
 	bot.send_message(message.chat.id, f'Теперь {chet} неделя', reply_markup = menu)
 	db.close()
 def dayt(message):
-	if message.text == 'Изменений нет'
-		db = shelve.open('db')
+	db = shelve.open('db')
+	if message.text == 'Изменений нет':
 		db['change'] = 'Нет'
+		bot.send_message(message.from_user.id, 'На какой день недели тебе нужно рассписание?', reply_markup = menu)
 	else:
 		db['day'] = message.text
-		db.close()
 		sent = bot.send_message(message.chat.id, 'Введи изменения')
 		bot.register_next_step_handler(sent, change)
+	db.close()
 def change(message):
 	db = shelve.open('db')
 	db['change'] = message.text
