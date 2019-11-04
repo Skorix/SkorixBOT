@@ -340,6 +340,7 @@ def change(message):
 	db = shelve.open('db')
 	db['change'] = message.text
 	db.close()
+	bot.send_message(message.from_user.id, 'На какой день недели тебе нужно рассписание?', reply_markup = menu)
 def les1(message):
 	db = shelve.open('db')
 	db['les1'] = message.text
