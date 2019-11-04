@@ -3,7 +3,7 @@ import telebot
 import shelve
 global menu
 
-bot = telebot.TeleBot('857593648:AAFR6ED50U5I5id5d4KWlLMhVTxHE1uKVPU')
+bot = telebot.TeleBot('945462714:AAH0ikBMSiiiwjDBOafR_ZA_5D_o_jW_cPo')
 
 @bot.message_handler(content_types=['text'])
 def main(message):
