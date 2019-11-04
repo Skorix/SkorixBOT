@@ -3,6 +3,7 @@ import telebot
 import shelve
 global menu
 menu = telebot.types.ReplyKeyboardMarkup(True, False)
+menu.row('Расписание звонков')
 menu.row('Понедельник','Вторник')
 menu.row('Среда','Четверг')
 menu.row('Пятница','Субота')
