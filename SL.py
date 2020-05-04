@@ -1,14 +1,18 @@
-#-*- SLBOT -*-
+#-*- SFBOT -*-
 import telebot
 import shelve
 global menu
+
 menu = telebot.types.ReplyKeyboardMarkup(True, False)
 menu.row('Расписание звонков')
 menu.row('Понедельник','Вторник')
 menu.row('Среда','Четверг')
 menu.row('Пятница','Субота')
+
 bot = telebot.TeleBot('945462714:AAH0ikBMSiiiwjDBOafR_ZA_5D_o_jW_cPo')
+
 @bot.message_handler(content_types=['text'])
+
 def main(message):
 #start
 	if message.text == '/start':
