@@ -248,6 +248,7 @@ def main(message):
 #Рассписание звонков
 	if message.text == 'Расписание звонков':
 		bot.send_message(message.chat.id, '1:   8:30 - 10:05\n2: 10:25 - 12:00\n3: 12:30 - 14:05\n4: 14:15 - 15:50\n5: 16:00 - 17:35\n6: 17:45 - 19:25\n7: 19:25 - 21:00')
+
 #Изменения
 	if message.text == 'Чнг':
 		Keyboard = telebot.types.ReplyKeyboardMarkup(True, False)
@@ -329,6 +330,10 @@ def main(message):
 	if message.text == 'Тихонова':
 		bot.send_message(message.chat.id, db['les8'])
 	db.close()
+
+#ФИО
+	if message.text == ('8:30 - 10:05\n23' or '12:30 - 14:05\n22' or  '8:30 - 10:05\nНет' or '8:30 - 10:05\n317' or '12:30 - 14:05\n316' or '8:30 - 10:05\n310'):
+		bot.send_message(message.from_user.id, 'Математик')
 
 #НАЗАД
 	if message.text == 'НАЗАД':
