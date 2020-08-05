@@ -11,12 +11,17 @@ menu.row('Пятница','Субота')
 
 bot = telebot.TeleBot('945462714:AAH0ikBMSiiiwjDBOafR_ZA_5D_o_jW_cPo')
 
+@bot.message_handler(commands=['start'])
+
+def start(message):
+    bot.send_message(message.from_user.id, 'Этот телеграм бот может:\n1. Показывать рассписание(с указанием кабинета), в зависимости от текущей чётности недели + показывать рассписание звонков\n2. Показывать актуальное домашнее задание(для этого нужно во просмотра рассисания на какой-либо день недели нажать на интересующий предмет)')
+    bot.send_message(message.from_user.id, 'В далнейшем планируется добавить:\n1. Просмотр ФИО преподавателя\n2. Объявления старосты\n3. Прикрепление файлов к домашнему заданию')
+    bot.send_message(message.from_user.id, 'На какой день недели тебе нужно рассписание?', reply_markup = menu)
+
 @bot.message_handler(content_types=['text'])
 
 def main(message):
-#start
-	if message.text == '/start':
-		bot.send_message(message.from_user.id, 'На какой день недели тебе нужно рассписание?', reply_markup = menu)
+
 #Чётность
 	if message.text=='Четн':
 		db = shelve.open('db')
@@ -27,6 +32,7 @@ def main(message):
 		msg = bot.send_message(message.chat.id, f'Сейчас {chet} неделя', reply_markup = Keyboard)
 		bot.register_next_step_handler(msg, chetn)
 		db.close()
+
 #Рассписание
 	if message.text == 'Понедельник':
 		db = shelve.open('db')
@@ -37,9 +43,9 @@ def main(message):
 		if chet == 'ЧЁТНАЯ':
 			Keyboard = telebot.types.ReplyKeyboardMarkup(True, False)
 			Keyboard.row('НАЗАД')
-			Keyboard.row('23', 'Элементы высшей математики')
-			Keyboard.row('301/2', 'МДК')
-			Keyboard.row('310/3', 'Устройство и функционирование ИС')
+			Keyboard.row(' 8:30 - 10:05\n23', 'Элементы высшей математики')
+			Keyboard.row('10:25 - 12:00\n301/2', 'МДК')
+			Keyboard.row('12:30 - 14:05\n310/3', 'Устройство и функционирование ИС')
 			bot.send_message(message.from_user.id, 'Понедельник', reply_markup = Keyboard)
 			if change != 'Нет':
 				if day == 'Понедельник':
@@ -54,9 +60,9 @@ def main(message):
 		if chet == 'ЧЁТНАЯ':
 			Keyboard = telebot.types.ReplyKeyboardMarkup(True, False)
 			Keyboard.row('НАЗАД')
-			Keyboard.row('113', 'Основы алгоритмизации и программирования')
-			Keyboard.row('401', 'Физра')
-			Keyboard.row('22', 'Элементы высшей математики')
+			Keyboard.row(' 8:30 - 10:05\n113', 'Основы алгоритмизации и программирования')
+			Keyboard.row('10:25 - 12:00\n401', 'Физра')
+			Keyboard.row('12:30 - 14:05\n22', 'Элементы высшей математики')
 			bot.send_message(message.from_user.id, 'Вторник', reply_markup = Keyboard)
 			if change != 'Нет':
 				if day == 'Вторник':
@@ -71,9 +77,9 @@ def main(message):
 		if chet == 'ЧЁТНАЯ':
 			Keyboard = telebot.types.ReplyKeyboardMarkup(True, False)
 			Keyboard.row('НАЗАД')
-			Keyboard.row('301/2', 'Устройство и функционирование ИС')
-			Keyboard.row('401', 'Физра')
-			Keyboard.row('22', 'Элементы высшей математики')
+			Keyboard.row(' 8:30 - 10:05\n301/2', 'Устройство и функционирование ИС')
+			Keyboard.row('10:25 - 12:00\n401', 'Физра')
+			Keyboard.row('12:30 - 14:05\n22', 'Элементы высшей математики')
 			bot.send_message(message.from_user.id, 'Среда', reply_markup = Keyboard)
 			if change != 'Нет':
 				if day == 'Среда':
@@ -88,9 +94,9 @@ def main(message):
 		if chet == 'ЧЁТНАЯ':
 			Keyboard = telebot.types.ReplyKeyboardMarkup(True, False)
 			Keyboard.row('НАЗАД')
-			Keyboard.row('Не', 'ДК')
-			Keyboard.row('107/5', 'Инглишь')
-			Keyboard.row('309', 'Русский язык и культура речи')
+			Keyboard.row(' 8:30 - 10:05\nНе', 'ДК')
+			Keyboard.row('10:25 - 12:00\n107/5', 'Инглишь')
+			Keyboard.row('12:30 - 14:05\n309', 'Русский язык и культура речи')
 			bot.send_message(message.from_user.id, 'Четверг', reply_markup = Keyboard)
 			if change != 'Нет':
 				if day == 'Четверг':
@@ -105,9 +111,9 @@ def main(message):
 		if chet == 'ЧЁТНАЯ':
 			Keyboard = telebot.types.ReplyKeyboardMarkup(True, False)
 			Keyboard.row('НАЗАД')
-			Keyboard.row('Нет', 'Элементы высшей математики')
-			Keyboard.row('Нет', 'БЖ')
-			Keyboard.row('Нет', 'Устройство и функционирование ИС')
+			Keyboard.row(' 8:30 - 10:05\nНет', 'Элементы высшей математики')
+			Keyboard.row('10:25 - 12:00\nНет', 'БЖ')
+			Keyboard.row('12:30 - 14:05\nНет', 'Устройство и функционирование ИС')
 			bot.send_message(message.from_user.id, 'Пятница', reply_markup = Keyboard)
 			if change != 'Нет':
 				if day == 'Пятница':
@@ -122,9 +128,9 @@ def main(message):
 		if chet == 'ЧЁТНАЯ':
 			Keyboard = telebot.types.ReplyKeyboardMarkup(True, False)
 			Keyboard.row('НАЗАД')
-			Keyboard.row('113', 'Основы алгоритмизации и программирования')
-			Keyboard.row('309', 'Русский язык и культура речи')
-			Keyboard.row('Нет', 'МДК')
+			Keyboard.row(' 8:30 - 10:05\n113', 'Основы алгоритмизации и программирования')
+			Keyboard.row('10:25 - 12:00\n309', 'Русский язык и культура речи')
+			Keyboard.row('12:30 - 14:05\nНет', 'МДК')
 			bot.send_message(message.from_user.id, 'Субота', reply_markup = Keyboard)
 			if change != 'Нет':
 				if day == 'Субота':
@@ -140,9 +146,9 @@ def main(message):
 		if chet == 'НЕЧЁТНАЯ':
 			Keyboard = telebot.types.ReplyKeyboardMarkup(True, False)
 			Keyboard.row('НАЗАД')
-			Keyboard.row('317', 'Элементы высшей математики')
-			Keyboard.row('316', 'МДК')
-			Keyboard.row('301/2', 'Устройство и функционирование ИС')
+			Keyboard.row(' 8:30 - 10:05\n317', 'Элементы высшей математики')
+			Keyboard.row('10:25 - 12:00\n316', 'МДК')
+			Keyboard.row('12:30 - 14:05\n301/2', 'Устройство и функционирование ИС')
 			bot.send_message(message.from_user.id, 'Понедельник', reply_markup = Keyboard)
 			if change != 'Нет':
 				if day == 'Понедельник':
@@ -157,9 +163,9 @@ def main(message):
 		if chet == 'НЕЧЁТНАЯ':
 			Keyboard = telebot.types.ReplyKeyboardMarkup(True, False)
 			Keyboard.row('НАЗАД')
-			Keyboard.row('301/3', 'Основы алгоритмизации и программирования')
-			Keyboard.row('301/2', 'МДК')
-			Keyboard.row('316', 'Элементы высшей математики')
+			Keyboard.row(' 8:30 - 10:05\n301/3', 'Основы алгоритмизации и программирования')
+			Keyboard.row('10:25 - 12:00\n301/2', 'МДК')
+			Keyboard.row('12:30 - 14:05\n316', 'Элементы высшей математики')
 			bot.send_message(message.from_user.id, 'Вторник', reply_markup = Keyboard)
 			if change != 'Нет':
 				if day == 'Вторник':
@@ -174,9 +180,9 @@ def main(message):
 		if chet == 'НЕЧЁТНАЯ':
 			Keyboard = telebot.types.ReplyKeyboardMarkup(True, False)
 			Keyboard.row('НАЗАД')
-			Keyboard.row('301/2', 'Устройство и функционирование ИС')
-			Keyboard.row('401', 'Физра')
-			Keyboard.row('316', 'Элементы высшей математики')
+			Keyboard.row(' 8:30 - 10:05\n301/2', 'Устройство и функционирование ИС')
+			Keyboard.row('10:25 - 12:00\n401', 'Физра')
+			Keyboard.row('12:30 - 14:05\n316', 'Элементы высшей математики')
 			bot.send_message(message.from_user.id, 'Среда', reply_markup = Keyboard)
 			if change != 'Нет':
 				if day == 'Среда':
@@ -191,9 +197,9 @@ def main(message):
 		if chet == 'НЕЧЁТНАЯ':
 			Keyboard = telebot.types.ReplyKeyboardMarkup(True, False)
 			Keyboard.row('НАЗАД')
-			Keyboard.row('11', 'ДК')
-			Keyboard.row('107/5', 'Инглишь')
-			Keyboard.row('113', 'Основы алгоритмизации и программирования')
+			Keyboard.row(' 8:30 - 10:05\n11', 'ДК')
+			Keyboard.row('10:25 - 12:00\n107/5', 'Инглишь')
+			Keyboard.row('12:30 - 14:05\n113', 'Основы алгоритмизации и программирования')
 			bot.send_message(message.from_user.id, 'Четверг', reply_markup = Keyboard)
 			if change != 'Нет':
 				if day == 'Четверг':
@@ -208,9 +214,9 @@ def main(message):
 		if chet == 'НЕЧЁТНАЯ':
 			Keyboard = telebot.types.ReplyKeyboardMarkup(True, False)
 			Keyboard.row('НАЗАД')
-			Keyboard.row('310', 'Элементы высшей математики')
-			Keyboard.row('407', 'БЖ')
-			Keyboard.row('412', 'Устройство и функционирование ИС')
+			Keyboard.row(' 8:30 - 10:05\n310', 'Элементы высшей математики')
+			Keyboard.row('10:25 - 12:00\n407', 'БЖ')
+			Keyboard.row('12:30 - 14:05\n412', 'Устройство и функционирование ИС')
 			bot.send_message(message.from_user.id, 'Пятница', reply_markup = Keyboard)
 			if change != 'Нет':
 				if day == 'Пятница':
@@ -225,9 +231,9 @@ def main(message):
 		if chet == 'НЕЧЁТНАЯ':
 			Keyboard = telebot.types.ReplyKeyboardMarkup(True, False)
 			Keyboard.row('НАЗАД')
-			Keyboard.row('113', 'Основы алгоритмизации и программирования')
-			Keyboard.row('309', 'Русский язык и культура речи')
-			Keyboard.row('301/2', 'МДК')
+			Keyboard.row(' 8:30 - 10:05\n113', 'Основы алгоритмизации и программирования')
+			Keyboard.row('10:25 - 12:00\n309', 'Русский язык и культура речи')
+			Keyboard.row('12:30 - 14:05\n301/2', 'МДК')
 			bot.send_message(message.from_user.id, 'Субота', reply_markup = Keyboard)
 			if change != 'Нет':
 				if day == 'Субота':
@@ -238,10 +244,12 @@ def main(message):
 		Keyboard.row('Кайфеджан','Тихонова')
 		Keyboard.row('НАЗАД')
 		bot.send_message(message.chat.id, 'Какой группы?', reply_markup = Keyboard)
+
 #Рассписание звонков
 	if message.text == 'Расписание звонков':
 		bot.send_message(message.chat.id, '1:   8:30 - 10:05\n2: 10:25 - 12:00\n3: 12:30 - 14:05\n4: 14:15 - 15:50\n5: 16:00 - 17:35\n6: 17:45 - 19:25\n7: 19:25 - 21:00')
-#Изменения
+10:25 - 12:00\n12:30 - 14:05\n
+12:30 - 14:05\n#Изменения
 	if message.text == 'Чнг':
 		Keyboard = telebot.types.ReplyKeyboardMarkup(True, False)
 		Keyboard.row('Изменений нет')
@@ -250,6 +258,7 @@ def main(message):
 		Keyboard.row('Пятница','Субота')
 		sent = bot.send_message(message.chat.id, 'На какой день недели изменения?', reply_markup = Keyboard)
 		bot.register_next_step_handler(sent, dayt)
+
 #ДЗ
 	if message.text == 'Дз':
 		Keyboard = telebot.types.ReplyKeyboardMarkup(True, False)
@@ -261,7 +270,7 @@ def main(message):
 		Keyboard.row('МДК#')
 		Keyboard.row('БЖ#')
 		Keyboard.row('НАЗАД')
-		bot.send_message(message.chat.id, 'На какой предмет?', reply_markup = Keyboard)		
+		bot.send_message(message.chat.id, 'На какой предмет?', reply_markup = Keyboard)
 
 	if message.text == 'Основы алгоритмов и программирования#':
 		sent = bot.send_message(message.chat.id,'Введи задание')
@@ -275,7 +284,7 @@ def main(message):
 		sent = bot.send_message(message.chat.id,'Введи задание')
 		bot.register_next_step_handler(sent, les3)
 
-	if message.text == 'Русский язык и культура речи#':	
+	if message.text == 'Русский язык и культура речи#':
 		sent = bot.send_message(message.chat.id,'Введи задание')
 		bot.register_next_step_handler(sent, les4)
 
@@ -301,7 +310,7 @@ def main(message):
 		bot.send_message(message.chat.id, db['les1'])
 
 	if message.text == 'Устройство и функционирование ИС':
-		bot.send_message(message.chat.id, db['les2']) 
+		bot.send_message(message.chat.id, db['les2'])
 
 	if message.text == 'Элементы высшей математики':
 		bot.send_message(message.chat.id, db['les3'])
@@ -321,9 +330,12 @@ def main(message):
 	if message.text == 'Тихонова':
 		bot.send_message(message.chat.id, db['les8'])
 	db.close()
+
 #НАЗАД
 	if message.text == 'НАЗАД':
 		bot.send_message(message.from_user.id, 'На какой день недели тебе нужно рассписание?', reply_markup = menu)
+
+#СЮРЕАЛИЗАЦИЯ
 def chetn(message):
 	db = shelve.open('db')
 	chet = db['chet']
