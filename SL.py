@@ -157,7 +157,6 @@ def main(message):
     if message.text == 'Инглишь':
         Keyboard = telebot.types.ReplyKeyboardMarkup(True, False)
         Keyboard.row('Кайфеджан','Тихонова')
-        Keyboard.row('НАЗАД')
         bot.send_message(message.chat.id, 'Какой группы?', reply_markup = Keyboard)
 
 #Изменения
@@ -235,10 +234,10 @@ def main(message):
         bot.send_message(message.chat.id, db['les6'])
 
     if message.text == 'Кайфеджан':
-        bot.send_message(message.chat.id, db['les7'])
+        bot.send_message(message.chat.id, db['les7'], reply_markup = menu)
 
     if message.text == 'Тихонова':
-        bot.send_message(message.chat.id, db['les8'])
+        bot.send_message(message.chat.id, db['les8'], reply_markup = menu)
 
 #ФИО
     if message.text in ['8:30 - 10:05\n23', '12:30 - 14:05\n22', '8:30 - 10:05\nНет', '8:30 - 10:05\n317', '12:30 - 14:05\n316', '8:30 - 10:05\n310']:
